@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<style>
+			.margin-20 {
+				margin: 20px;
+			}
+			.margin-bottom-20 {
+				margin-bottom: 20px;
+			}
+			.text-center {
+				text-align: center;
+			}
+			.text-left {
+				text-align: left;
+			}
+			.text-right {
+				text-align: right;
+			}
+			.border-solid {
+				border: 1px solid black;
+			}
+			.border-dotted {
+				border: 1px dotted black;
+			}
+			.height-60 {
+				height: 60px;
+			}
+			.border-left-right {
+				border-left: 1px solid black;
+				border-right: 1px solid black;
+			}
+			.border-top-bottom {
+				border-top: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+			.circle {
+				border-radius: 50%;
+				width: 25px;
+				height: 25px;
+			}
+			.c {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.c-item {
+				flex: 33%;
+			}
+			.c-item-top {
+				align-self: flex-start;
+
+			}
+			.float-left {
+				float: left;
+			}
+			.float-right {
+				float: right;
+			}
+
+			.c-item-bottom {
+				align-self: flex-end;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="margin-20">
+			<div class="margin-bottom-20 text-center border-solid" style="height: 20px; width: 100%">
+				A
+			</div>
+			<div class="height-60" style="width: 100%; display: flex;">
+				<div class="text-left" style="width: 25%; border: 1px solid black; height: 20px">
+					B
+				</div>
+				<div class="border-dotted height-60 text-center c" style="width: 75%">
+					<div class="c-item c-item-bottom">
+						<span class="circle border-solid float-left">
+							C1
+						</span>
+					</div>
+					<span class="c-item-bottom c-item">
+						C
+					</span>
+					<div class="c-item c-item-top">
+						<span class="circle border-solid float-right">
+							C1
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="height-60"  style="width: 100%; display: flex;">
+				<div class="text-left" style="width: 35%">
+
+				</div>
+				<div class="border-left-right text-left height-60" style="width: 35%; align-items: center; display: flex">
+					D
+				</div>
+			</div>
+			<div class="margin-bottom-20 text-right border-top-bottom height-60"
+				 style="width: 100%; display: flex; align-items: center; justify-content: flex-end">
+				<span class="flex-item margin-20">E</span>
+			</div>
+		</div>
+	</body>
+</html>
