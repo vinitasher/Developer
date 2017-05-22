@@ -1,1 +1,5 @@
 /CrackingCoding/test/
+/*/classes/*
+.metadata/*
+/*/build/*
+/eclipse

@@ -25,6 +25,17 @@ public class ArrayUtil {
         return array;
     }
     
+    public static int[] sampleArray(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Input array length:");
+        int length = sc.nextInt();
+        int[] array = new int[length];
+        for(int i=0; i<length; i++){
+            array[i] = i;
+        }
+        return array;
+    }
+    
     public static void outputArray(int[] array){
         
         if(array != null){
