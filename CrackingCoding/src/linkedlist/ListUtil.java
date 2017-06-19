@@ -20,7 +20,7 @@ public class ListUtil {
         int size = sc.nextInt();
         Node head = null;
         Node current = head;
-        while(size > 0&&sc.hasNext()){
+        while(size > 0 && sc.hasNext()){
             Node n = new Node();
             n.value = sc.nextInt();
             if(head == null){
@@ -36,10 +36,10 @@ public class ListUtil {
     }
     
     public static void displayNodeList(Node n){
-        do {
+        while(n != null){
             System.out.println(n.value);
             n = n.next;
-        }while(n != null);
+        }
     }
     
     public static LinkedList readLinkedList(){
@@ -63,6 +63,17 @@ public class ListUtil {
             }
         }
         System.out.println("\n");
+    }
+    
+    public static void displayIntegerList(List list){
+        for(Object o: list){
+            if(o instanceof List){
+                displayIntegerList((List) o);
+            } else {
+                System.out.print(o);
+            }
+        }
+        System.out.print("\n");
     }
     
 }

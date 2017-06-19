@@ -1,3 +1,6 @@
 com/viv/vivlabs/StringList.class
+com/viv/vivlabs/EndpointInfo.class
 com/viv/vivlabs/ServiceEndpoint.class
 com/viv/vivlabs/ServiceManager.class
+com/viv/vivlabs/ServiceCallable.class
+.netbeans_automatic_build

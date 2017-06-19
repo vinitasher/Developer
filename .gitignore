@@ -3,3 +3,9 @@
 .metadata/*
 /*/build/*
 /eclipse
+/Services/target/
+./GlassFish_Server/
+*.jar
+*.class
+*GlassFish*
+*glassfish*

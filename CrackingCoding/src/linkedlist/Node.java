@@ -5,11 +5,17 @@
  */
 package linkedlist;
 
+import java.util.Comparator;
+
 /**
  *
  * @author vasher
  */
-public class Node {
-    int value;
+public class Node implements Comparable<Node> {
+    Integer value;
     Node next;
+
+    public int compareTo(Node o) {
+        return value.compareTo(o.value);
+    }
 }

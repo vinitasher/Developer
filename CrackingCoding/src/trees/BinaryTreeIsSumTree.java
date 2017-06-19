@@ -34,6 +34,9 @@ public class BinaryTreeIsSumTree {
         if (root == null) {
             return true;
         }
+        if(root.left == null && root.right == null){
+            return true;
+        }
         boolean left = isBinarySumTreeBoolean(root.left);
         boolean right = isBinarySumTreeBoolean(root.right);
         if (!left || !right) {
@@ -46,13 +49,12 @@ public class BinaryTreeIsSumTree {
     }
 
     public static void main(String[] args) {
-//        try {
-//            int rootValue = isBinarySumTree(TreeUtil.sampleBinarySumTree());
-//            System.out.println("Is a binary tree");
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        
+        try {
+            int rootValue = isBinarySumTree(TreeUtil.sampleBinarySumTree());
+            System.out.println("Is a binary tree");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
         if(isBinarySumTreeBoolean(TreeUtil.sampleBinarySumTree())){
             System.out.println("Is a binary sum tree");
         } else {

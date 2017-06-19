@@ -14,13 +14,28 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.ehcache.Cache;
+import org.ehcache.CacheManager;
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.CacheManagerBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
 
 /**
  * @author priyanka
@@ -32,6 +47,19 @@ public class ServiceManager<T> {
 
     private static ArrayList<String> serviceList = new ArrayList<String>();
     private static HashMap<String, ExecutorService> serviceThreadPoolAssociation = new HashMap();
+    CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+          .withCache("preConfigured",
+               CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, EndpointInfo.class,
+                                              ResourcePoolsBuilder.heap(100))
+               .build())
+          .build(true);
+
+      Cache<String, EndpointInfo> preConfigured
+          = cacheManager.getCache("preConfigured", String.class, EndpointInfo.class);
+
+      Cache<String, EndpointInfo> myCache = cacheManager.createCache("myCache",
+          CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, EndpointInfo.class,
+                                        ResourcePoolsBuilder.heap(100)).build());
 
     /**
      * @param sep
@@ -62,21 +90,6 @@ public class ServiceManager<T> {
         return Response.status(400).entity("This service was not registered").build();
     }
 
-    /*
-	@GET
-	//@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	@Path("/getAllServices")
-	public Response getAllRegisteredServices(){
-		 List<String> list = Arrays.asList("");
-		GenericEntity<List<String>> gm = new GenericEntity<List<String>>(list){};
-		try{
-			gm = new GenericEntity<List<String>>(serviceList) {};
-		}catch(Exception ex){
-			return Response.ok(gm).build();
-		}
-		return Response.ok(gm).build();
-	}*/
-
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Path("/getAllServices")
@@ -85,60 +98,112 @@ public class ServiceManager<T> {
         return Response.ok(list).build();
     }
 
-    @GET
+    @POST
     @Path("/getResults")
-    public void getResults() {
-        getServiceConnection(serviceList.get(0));
+    public List<T> getResults(Map<String, Object> parameters) {
+        System.out.println("Get Results");
+        List<EndpointInfo> applicableResources = _calculateApplicableResources(parameters.keySet());
+        //System.out.println("The list of applicable resource: " + Arrays.toString(applicableResources.toArray()));
+        List<T> result = _invokeApplicableResources(applicableResources, parameters);
+        return result;
     }
 
-    /*
-	@POST
-	@Path("/getResults")
-	public List<T> getResults(Map<String, Object> parameters) {
-		List<ServiceEndpoint<T>> applicableResources = calculateApplicableResources(parameters.keySet());
-		System.out.println("The list of applicable resource: " + Arrays.toString(applicableResources.toArray()));
-		List<T> result = invokeApplicableResources(applicableResources, parameters);
-		return result;
-		
-		getServiceConnection(serviceList.get(0));
-	}*/
- /*
-	private List<T> invokeApplicableResources(List<ServiceEndpoint<T>> applicableResources,
-			Map<String, Object> parameters) {
-		System.out.println("Entering invoke method in SM");
-		ExecutorService executor;
-		List<T> aggregatedResult = new ArrayList<T>();
-		List<Future<List<T>>> futureList = new ArrayList<Future<List<T>>>();
-		for (ServiceEndpoint<T> sed : applicableResources) {
-			if (serviceThreadPoolAssociation.containsKey(sed)) {
-				executor = serviceThreadPoolAssociation.get(sed);
-			} else {
-				executor = Executors.newFixedThreadPool(sed.getMaxConcurrentInvocations());
-			}
-			ServiceCallable serviceCallable = new ServiceCallable(sed, parameters);
-			Future<List<T>> futureResult = executor.submit(serviceCallable);
-			futureList.add(futureResult);
-		}
+    private List<T> _invokeApplicableResources(List<EndpointInfo> applicableResources,
+            Map<String, Object> parameters) {
+        System.out.println("Entering invoke method in SM");
+        ExecutorService executor;
+        List<T> aggregatedResult = new ArrayList<T>();
+        List<Future<List<T>>> futureList = new ArrayList<Future<List<T>>>();
+        for (EndpointInfo sed : applicableResources) {
+            if (serviceThreadPoolAssociation.containsKey(sed)) {
+                executor = serviceThreadPoolAssociation.get(sed);
+            } else {
+                executor = Executors.newFixedThreadPool(sed.maxConcurrentInvocations);
+            }
+            ServiceCallable serviceCallable = new ServiceCallable(sed, parameters);
+            Future<List<T>> futureResult = executor.submit(serviceCallable);
+            futureList.add(futureResult);
+        }
 
-		List<T> result = null;
-		for (Future<List<T>> futureResult : futureList) {
-			try {
-				result = futureResult.get(5000, TimeUnit.MILLISECONDS);
-			} catch (TimeoutException e) {
-				System.out.println("Time out after 5 seconds");
-				futureResult.cancel(true);
-			} catch (InterruptedException ie) {
-				System.out.println("Error: Interrupted");
-			} catch (ExecutionException ee) {
-				System.out.println("Error: Execution interrupted");
-			}
-			aggregatedResult.addAll(result);
-		}
+        List<T> result = null;
+        for (Future<List<T>> futureResult : futureList) {
+            try {
+                result = futureResult.get(5000, TimeUnit.MILLISECONDS);
+            } catch (TimeoutException e) {
+                System.out.println("Time out after 5 seconds");
+                futureResult.cancel(true);
+            } catch (InterruptedException ie) {
+                System.out.println("Error: Interrupted");
+            } catch (ExecutionException ee) {
+                System.out.println("Error: Execution interrupted");
+            } 
+            aggregatedResult.addAll(result);
+        }
 
-		System.out.println("Exiting invoke method in SM");
-		return aggregatedResult;
-	}*/
-    public String getServiceConnection(String applicationName) {
+        System.out.println("Exiting invoke method in SM");
+        return aggregatedResult;
+    }
+
+//    public String getServiceConnection(String applicationName) {
+//        String output = null;
+//        try {
+//            URL url = new URL(applicationName + "/getMaxConcurrentInvocations");
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("GET");
+//            conn.setRequestProperty("Accept", "application/json");
+//            if (conn.getResponseCode() != 200) {
+//                throw new RuntimeException("Failed : HTTP error code : "
+//                        + conn.getResponseCode());
+//            }
+//            BufferedReader br = new BufferedReader(new InputStreamReader(
+//                    (conn.getInputStream())));
+//
+//            while ((output = br.readLine()) != null) {
+//                System.out.println(output);
+//            }
+//            conn.disconnect();
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return output;
+//    }
+    
+    private static EndpointInfo _getEndpointInfo(String applicationName) {
+        int max = _getMaxConcurrentInvocations(applicationName);
+        Set<String> params = _getSupportedParameters(applicationName);
+        EndpointInfo endpoint = new EndpointInfo(max, params, applicationName);
+        return endpoint;
+    }
+
+    private static Set<String> _getSupportedParameters(String applicationName) {
+        String output = null;
+        try {
+            URL url = new URL(applicationName + "/getSupportedParameters");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (conn.getInputStream())));
+
+            while ((output = br.readLine()) != null) {
+                System.out.println("Get Supported Parameters"+output);
+            }
+            conn.disconnect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new HashSet<String>();
+    }
+
+    private static int _getMaxConcurrentInvocations(String applicationName) {
         String output = null;
         try {
             URL url = new URL(applicationName + "/getMaxConcurrentInvocations");
@@ -153,7 +218,7 @@ public class ServiceManager<T> {
                     (conn.getInputStream())));
 
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
+                return Integer.parseInt(output);
             }
             conn.disconnect();
         } catch (MalformedURLException e) {
@@ -161,20 +226,24 @@ public class ServiceManager<T> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return output;
+        return -1;
     }
-    /*
-	private List<ServiceEndpoint<T>> calculateApplicableResources(Set<String> inputParameters) {
-		List<ServiceEndpoint<T>> applicableResources = new ArrayList<>();
-		for (String applicationName : serviceList) {
-			Set<String> supportedParameters = sed.getSupportedParameters();
-			if (supportedParameters.size() >= inputParameters.size()) {
-				if (supportedParameters.containsAll(inputParameters)) {
-					applicableResources.add(sed);
-				}
-			}
-		}
-		return applicableResources;
-	}*/
+
+    private List<EndpointInfo> _calculateApplicableResources(Set<String> inputParameters) {
+        List<EndpointInfo> applicableResources = new ArrayList<>();
+        for (String applicationName : serviceList) {
+            EndpointInfo endpoint = null;
+            if(myCache.containsKey(applicationName)){
+                endpoint = myCache.get(applicationName);
+            } else {
+                endpoint = _getEndpointInfo(applicationName);
+                myCache.put(applicationName, endpoint);
+            }
+            if(endpoint.supportsParameters(inputParameters)){
+                applicableResources.add(endpoint);
+            }
+        }
+        return applicableResources;
+    }
 
 }

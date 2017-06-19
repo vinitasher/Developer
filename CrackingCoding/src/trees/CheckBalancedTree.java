@@ -15,7 +15,7 @@ public class CheckBalancedTree {
 //        Node root = TreeUtil.sampleNonBalancedTree();
         Node root = TreeUtil.sampleInput();
         
-        System.out.println(isBinaryTree(root));
+        System.out.println(isBalancedTree(root));
     }
     
     public static int depthOfSubTree(Node n){
@@ -25,11 +25,11 @@ public class CheckBalancedTree {
         return Math.max(depthOfSubTree(n.left), depthOfSubTree(n.right)) + 1;
     }
     
-    public static boolean isBinaryTree(Node n){
+    public static boolean isBalancedTree(Node n){
         if(n == null){
             return true;
         }
-        if(!isBinaryTree(n.left)||!isBinaryTree(n.right)){
+        if(!isBalancedTree(n.left)||!isBalancedTree(n.right)){
             return false;
         }
         return Math.abs(depthOfSubTree(n.left)-depthOfSubTree(n.right))<=1;

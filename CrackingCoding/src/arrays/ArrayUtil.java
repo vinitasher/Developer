@@ -5,6 +5,7 @@
  */
 package arrays;
 
+import io.IOUtil;
 import java.util.Scanner;
 
 /**
@@ -36,10 +37,30 @@ public class ArrayUtil {
         return array;
     }
     
+    public static int[] sampleUnsortedArray(){
+        int length = IOUtil.readInteger("Input array length:");
+        int[] array = new int[length];
+        for(int i=0; i<length; i++){
+            array[i] = (int) Math.floor(Math.random()*length);
+        }
+        return array;
+    }
+    
+    public static int[] sampleSortedArray(){
+        int length = IOUtil.readInteger("Input array length:");
+        int sum = 0;
+        int[] array = new int[length];
+        for(int i=0; i<length; i++){
+            sum += (int) Math.floor(Math.random()*10);
+            array[i] = sum;
+        }
+        return array;
+    }
+    
     public static void outputArray(int[] array){
         
         if(array != null){
-            System.out.println("Array:");
+            System.out.println("\nArray:");
             for(int i=0; i<array.length; i++){
                 System.out.print(array[i]+" ");
             }

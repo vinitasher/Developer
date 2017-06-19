@@ -64,7 +64,7 @@ public class TreeTraversalIterative {
         }
         while(!stack.empty()){
             current = stack.pop();
-            System.out.println(current.value);
+            System.out.print(current.value + " ");
             current = current.getRight();
             while(current != null){
                 stack.push(current);
