@@ -12,20 +12,20 @@ package trees;
 public class CheckBalancedTree {
     
     public static void main(String[] args){
-//        Node root = TreeUtil.sampleNonBalancedTree();
-        Node root = TreeUtil.sampleInput();
+//        TreeNode root = TreeUtil.sampleNonBalancedTree();
+        TreeNode root = TreeUtil.sampleInput();
         
         System.out.println(isBalancedTree(root));
     }
     
-    public static int depthOfSubTree(Node n){
+    public static int depthOfSubTree(TreeNode n){
         if(n == null){
             return 0;
         }
         return Math.max(depthOfSubTree(n.left), depthOfSubTree(n.right)) + 1;
     }
     
-    public static boolean isBalancedTree(Node n){
+    public static boolean isBalancedTree(TreeNode n){
         if(n == null){
             return true;
         }

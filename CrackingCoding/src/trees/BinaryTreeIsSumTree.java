@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class BinaryTreeIsSumTree {
 
-    public static int isBinarySumTree(Node root) throws Exception {
+    public static int isBinarySumTree(TreeNode root) throws Exception {
         if (root == null) {
             return 0;
         }
@@ -30,7 +30,7 @@ public class BinaryTreeIsSumTree {
         return root.value + left + right;
     }
     
-    public static boolean isBinarySumTreeBoolean(Node root) {
+    public static boolean isBinarySumTreeBoolean(TreeNode root) {
         if (root == null) {
             return true;
         }

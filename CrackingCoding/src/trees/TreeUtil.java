@@ -11,66 +11,66 @@ package trees;
  */
 public class TreeUtil {
 
-    public static Node sampleInput() {
-        Node root = new Node(1);
+    public static TreeNode sampleInput() {
+        TreeNode root = new TreeNode(1);
 
-        root.left = new Node(10);
+        root.left = new TreeNode(10);
 
-        root.left.left = new Node(105);
-        root.left.left.left = new Node(106);
-        root.left.left.right = new Node(104);
+        root.left.left = new TreeNode(105);
+        root.left.left.left = new TreeNode(106);
+        root.left.left.right = new TreeNode(104);
 
-        root.right = new Node(1);
+        root.right = new TreeNode(1);
 
-        root.right.left = new Node(55);
+        root.right.left = new TreeNode(55);
 
-        root.right.right = new Node(77);
+        root.right.right = new TreeNode(77);
         return root;
     }
 
-    public static Node sampleBinarySearchTree() {
-        Node root = new Node(50);
+    public static TreeNode sampleBinarySearchTree() {
+        TreeNode root = new TreeNode(50);
 
-        root.left = new Node(30);
-        root.left.right = new Node(40);
-        root.left.right.left = new Node(35);
-        root.left.right.right = new Node(60);
+        root.left = new TreeNode(30);
+        root.left.right = new TreeNode(40);
+        root.left.right.left = new TreeNode(35);
+        root.left.right.right = new TreeNode(60);
 
-        root.left.left = new Node(20);
-//        root.left.left.right = new Node(31);
-        //root.left.right = new Node(40);
-        root.right = new Node(70);
+        root.left.left = new TreeNode(20);
+//        root.left.left.right = new TreeNode(31);
+        //root.left.right = new TreeNode(40);
+        root.right = new TreeNode(70);
 
-        root.right.right = new Node(90);
+        root.right.right = new TreeNode(90);
         return root;
     }
 
-    public static Node sampleBinarySumTree() {
-        Node root = new Node(26);
-        root.left = new Node(10);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(6);
-        root.right.right = new Node(3);
+    public static TreeNode sampleBinarySumTree() {
+        TreeNode root = new TreeNode(26);
+        root.left = new TreeNode(10);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(6);
+        root.right.right = new TreeNode(3);
         return root;
     }
 
-    public static Node sampleNonBalancedTree() {
-        Node root = new Node(1);
+    public static TreeNode sampleNonBalancedTree() {
+        TreeNode root = new TreeNode(1);
 
-        root.left = new Node(2);
+        root.left = new TreeNode(2);
 
-        root.left.left = new Node(4);
+        root.left.left = new TreeNode(4);
 
-        root.left.right = new Node(5);
+        root.left.right = new TreeNode(5);
 
-        root.right = new Node(3);
+        root.right = new TreeNode(3);
 
-        root.right.left = new Node(6);
+        root.right.left = new TreeNode(6);
 
-        root.right.right = new Node(7);
-        root.right.right.right = new Node(8);
-        root.right.right.right.right = new Node(9);
+        root.right.right = new TreeNode(7);
+        root.right.right.right = new TreeNode(8);
+        root.right.right.right.right = new TreeNode(9);
         return root;
     }
 }

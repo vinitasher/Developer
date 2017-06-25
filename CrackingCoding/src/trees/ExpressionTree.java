@@ -15,7 +15,7 @@ import java.util.Map;
 public class ExpressionTree {
     Map<Integer, String> pathMap;
     
-    private void _buildPaths(Node root){
+    private void _buildPaths(TreeNode root){
         if(root != null){
             if(!pathMap.containsKey(root.value)){
                 pathMap.put(root.value, root.value+"");
@@ -34,7 +34,7 @@ public class ExpressionTree {
         }
     }
     
-    public void printPaths(Node root){
+    public void printPaths(TreeNode root){
         _buildPaths(root);
         for(Map.Entry<Integer, String> entry : pathMap.entrySet()){
             System.out.println(entry.getValue());

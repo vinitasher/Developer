@@ -16,7 +16,7 @@ public class CheckIfBinarySearchTree {
         System.out.println(isBinarySubTree(TreeUtil.sampleBinarySearchTree(), Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
     
-    public static boolean isBinarySubTree(Node n, int min, int max){
+    public static boolean isBinarySubTree(TreeNode n, int min, int max){
         if(n == null){
             return true;
         }

@@ -16,9 +16,9 @@ import java.util.List;
 public class TreeToList {
     
     public static void main(String[] args){
-        Node root = TreeUtil.sampleInput();
-        List<List<Node>> output = new LinkedList<>();
-        LinkedList<Node> list = new LinkedList<>();
+        TreeNode root = TreeUtil.sampleInput();
+        List<List<TreeNode>> output = new LinkedList<>();
+        LinkedList<TreeNode> list = new LinkedList<>();
         boolean nextLevel = false;
         int depth = 0;
         if(root== null){
@@ -30,9 +30,9 @@ public class TreeToList {
         }
         while(nextLevel){
             nextLevel = false;
-            List<Node> currentList = output.get(depth);
+            List<TreeNode> currentList = output.get(depth);
             list = new LinkedList<>();
-            for(Node n: currentList){
+            for(TreeNode n: currentList){
                 if(n.left != null){
                     list.add(n.left);
                     nextLevel = true;

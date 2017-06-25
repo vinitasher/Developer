@@ -5,7 +5,7 @@
  */
 package arrays;
 
-import trees.Node;
+import trees.TreeNode;
 
 /**
  *
@@ -13,7 +13,7 @@ import trees.Node;
  */
 public class CountSmallerNumbersToRight {
     
-    class CountNode extends Node {
+    class CountNode extends TreeNode {
         int sum=0;
         int duplicate =1;
         

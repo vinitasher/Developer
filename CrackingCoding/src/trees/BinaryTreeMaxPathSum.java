@@ -13,7 +13,7 @@ public class BinaryTreeMaxPathSum {
     
     private int maxPathSum = Integer.MIN_VALUE;
     
-    private int calculateCurrentSum(Node n){
+    private int calculateCurrentSum(TreeNode n){
         if(n == null){
             return 0;
         }
@@ -28,7 +28,7 @@ public class BinaryTreeMaxPathSum {
         return currentSum;
     }
     
-    public int calculateMaxPathSum(Node root){
+    public int calculateMaxPathSum(TreeNode root){
         int leftSum = calculateCurrentSum(root.left);
         int rightSum = calculateCurrentSum(root.right);
         int rootSum = leftSum + rightSum + root.value;
@@ -37,7 +37,7 @@ public class BinaryTreeMaxPathSum {
     }
     
     public static void main(String[] args){
-        Node root = TreeUtil.sampleInput();
+        TreeNode root = TreeUtil.sampleInput();
         BinaryTreeMaxPathSum btmps = new BinaryTreeMaxPathSum();
         System.out.println(btmps.calculateMaxPathSum(root));
     }

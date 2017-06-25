@@ -14,19 +14,19 @@ import java.util.Stack;
  */
 public class TreeTraversalIterative {
     
-    public static void inOrderDestructive(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public static void inOrderDestructive(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while(!stack.empty()){
-            Node n = stack.pop();
-            Node left = n.getLeft();
+            TreeNode n = stack.pop();
+            TreeNode left = n.getLeft();
             if(left != null){
                 n.setLeft(null);
                 stack.push(n);
                 stack.push(left);
             } else {
                 System.out.println(n.getValue());
-                Node right = n.getRight();
+                TreeNode right = n.getRight();
                 if(right != null){
                     stack.push(right);
                 }
@@ -34,20 +34,20 @@ public class TreeTraversalIterative {
         }
     }
     
-    public static void inOrderNonDestructive(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public static void inOrderNonDestructive(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
-        HashSet<Node> visited = new HashSet<>();
+        HashSet<TreeNode> visited = new HashSet<>();
         while(!stack.empty()){
-            Node n = stack.pop();
-            Node left = n.getLeft();
+            TreeNode n = stack.pop();
+            TreeNode left = n.getLeft();
             if(left != null && !visited.contains(left)){
                 stack.push(n);
                 stack.push(left);
             } else {
                 System.out.println(n.getValue());
                 visited.add(n);
-                Node right = n.getRight();
+                TreeNode right = n.getRight();
                 if(right != null){
                     stack.push(right);
                 }
@@ -55,9 +55,9 @@ public class TreeTraversalIterative {
         }
     }
     
-    public static void inOrder(Node root) {
-        Stack<Node> stack = new Stack<>();
-        Node current = root;
+    public static void inOrder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
         while(current != null){
             stack.push(current);
             current = current.left;
@@ -73,22 +73,22 @@ public class TreeTraversalIterative {
         }
     }
     
-    public static void preOrderDestructive(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public static void preOrderDestructive(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while(!stack.empty()){
-            Node n = stack.pop();
+            TreeNode n = stack.pop();
             if(n.getValue() != -1){
                 System.out.println(n.getValue());
             }
             n.setValue(-1);
-            Node left = n.getLeft();
+            TreeNode left = n.getLeft();
             if(left != null){
                 n.setLeft(null);
                 stack.push(n);
                 stack.push(left);
             } else {
-                Node right = n.getRight();
+                TreeNode right = n.getRight();
                 if(right != null){
                     stack.push(right);
                 } 
@@ -96,18 +96,18 @@ public class TreeTraversalIterative {
         }
     }
     
-    public static void postOrderDestructive(Node root) {
-        Stack<Node> stack = new Stack<>();
+    public static void postOrderDestructive(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while(!stack.empty()){
-            Node n = stack.pop();
-            Node left = n.getLeft();
+            TreeNode n = stack.pop();
+            TreeNode left = n.getLeft();
             if(left != null){
                 n.setLeft(null);
                 stack.push(n);
                 stack.push(left);
             } else {
-                Node right = n.getRight();
+                TreeNode right = n.getRight();
                 if(right != null){
                     n.setRight(null);
                     stack.push(n);

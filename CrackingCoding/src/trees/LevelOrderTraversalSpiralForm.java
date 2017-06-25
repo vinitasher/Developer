@@ -15,16 +15,16 @@ import java.util.Stack;
  */
 public class LevelOrderTraversalSpiralForm {
     
-    Stack<Node> ltr, rtl;
+    Stack<TreeNode> ltr, rtl;
     
-    public void spiralTraverse(Node root){
+    public void spiralTraverse(TreeNode root){
         if(root==null){
             return;
         }
         ltr.add(root);
         while(!ltr.isEmpty() || !rtl.isEmpty()){
             while(!ltr.isEmpty()){
-                Node n = ltr.pop();
+                TreeNode n = ltr.pop();
                 if(n == null){
                     continue;
                 }
@@ -34,7 +34,7 @@ public class LevelOrderTraversalSpiralForm {
             }
             
             while(!rtl.isEmpty()){
-                Node n = rtl.pop();
+                TreeNode n = rtl.pop();
                 if(n == null){
                     continue;
                 }
@@ -49,7 +49,7 @@ public class LevelOrderTraversalSpiralForm {
         LevelOrderTraversalSpiralForm obj = new LevelOrderTraversalSpiralForm();
         obj.ltr = new Stack<>();
         obj.rtl = new Stack<>();
-        Node root = TreeUtil.sampleInput();
+        TreeNode root = TreeUtil.sampleInput();
         obj.spiralTraverse(root);
     }
 }

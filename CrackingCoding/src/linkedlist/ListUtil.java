@@ -58,7 +58,7 @@ public class ListUtil {
             if(o instanceof List){
                 displayList((List) o);
             }else {
-                trees.Node n = (trees.Node)o;
+                trees.TreeNode n = (trees.TreeNode)o;
                 System.out.print(n.getValue()+" ");
             }
         }

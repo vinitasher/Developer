@@ -11,9 +11,9 @@ package trees;
  */
 public class BstInsertionDeletion {
     
-    public Node insertNode(Node root, int n){
+    public TreeNode insertNode(TreeNode root, int n){
         if(root == null){
-            return new Node(n);
+            return new TreeNode(n);
         }
         if(root.value > n){
             root.left = insertNode(root.left, n);
@@ -23,7 +23,7 @@ public class BstInsertionDeletion {
         return root;
     }
     
-    public Node deleteNode(Node root, int n){
+    public TreeNode deleteNode(TreeNode root, int n){
         if(root == null ){
             System.out.println("Error: Could not find input value " + n + "in BST");
             return null;
@@ -55,14 +55,14 @@ public class BstInsertionDeletion {
         return root;
     }
     
-    private int findInOrderSuccessorValue(Node root){
+    private int findInOrderSuccessorValue(TreeNode root){
         //do later
         
     }
 
     public static void main(String[] args){
         BstInsertionDeletion bid = new BstInsertionDeletion();
-        Node root = TreeUtil.sampleBinarySearchTree();
+        TreeNode root = TreeUtil.sampleBinarySearchTree();
         TreeTraversalIterative.inOrder(root);
         System.out.println("\nOutput:");
         bid.insertNode(root, 100);

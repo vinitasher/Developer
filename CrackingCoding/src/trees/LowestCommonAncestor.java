@@ -12,19 +12,19 @@ package trees;
  */
 public class LowestCommonAncestor {
     public static void main(String[] args){
-        Node lca = containsNodes(TreeUtil.sampleInput(), 18, 20);
+        TreeNode lca = containsNodes(TreeUtil.sampleInput(), 18, 20);
         System.out.println(lca.value);
     }
     
-    public static Node containsNodes(Node root, int n1, int n2){
+    public static TreeNode containsNodes(TreeNode root, int n1, int n2){
         if(root == null){
             return root;
         }
         if(root.value == n1 || root.value == n2){
             return root;
         }
-        Node leftLCA = containsNodes(root.left, n1, n2);
-        Node rightLCA = containsNodes(root.right, n1, n2);
+        TreeNode leftLCA = containsNodes(root.left, n1, n2);
+        TreeNode rightLCA = containsNodes(root.right, n1, n2);
         if(leftLCA != null && rightLCA != null){
             return root;
         }

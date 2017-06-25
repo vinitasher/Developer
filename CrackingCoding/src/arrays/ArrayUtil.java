@@ -69,6 +69,24 @@ public class ArrayUtil {
         }
     }
     
+    public static char[][] read2DCharArray(){
+        System.out.println("\nReading 2D char array");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nEnter number of rows:");
+        int rows = sc.nextInt();
+        System.out.println("\nEnter number of cols:");
+        int cols = sc.nextInt();
+        char[][] input = new char[rows][cols];
+        for(int i=0; i<rows; i++){
+            System.out.println("\nEnter row:");
+            for(int j=0; j<cols; j++){
+                System.out.println("\nEnter col:");
+                input[i][j] = sc.next().toCharArray()[0];
+            }
+        }
+        return input;
+    }
+    
     public static void swap(int[] array, int i, int j){
         if(array == null){
             System.out.println("Array is null");
