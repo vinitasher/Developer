@@ -74,7 +74,7 @@ public class SerializeDeseializeCodec {
     }
     
     private TreeNode buildTree(Deque<String> queue){
-        String value = queue.r.poll();
+        String value = queue.poll();
         if(value.trim().equals(NULL_IDENTIFIER)){
             return null;
         }
