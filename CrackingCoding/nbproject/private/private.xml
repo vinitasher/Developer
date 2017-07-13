@@ -3,61 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/dp/BuySellStock.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/ScrambleString.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/TreeUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/SearchForRange.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/BinaryTreeIsSumTree.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/BreadthFirstSearch.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/ArrayUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/FindRouteExists.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/MedianFromDataStream.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/TreeToList.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/JumpGame.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/WildcardMatching.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/Node.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/FirstMissingPositive.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/CountSmallerNumbersToRight.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/linkedlist/MergeIntervals.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/StringUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/CommonCharacters.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/Polynomial.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/PeakAndValleys.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/LowestCommonAncestor.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/DepthFirstSearch.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/sort/WiggleSort.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/PalindromePairs.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/DecodeWays.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/TreeTraversalIterative.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/SlidingWindowMaximum.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/EvaluateExpression.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/dfs/OutOfBoundaryPaths.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/PythagoreanTriplet.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/sort/QuickSelect.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/GraphUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/CheckIfBinarySearchTree.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/AllDistinctCharactersInOrder.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/LevelOrderTraversalSpiralForm.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/LongestConsecutiveSequence.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/CountOnesInSortedBinaryArray.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/BinarySearch.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/ExpressionTree.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/PrintAllPathsFromRootToLeaf.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/io/IOUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/ClosestPair.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/MaxSubArray.java</file>
+            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/NumberOfUniqueBST.java</file>
             <file>file:/Users/vasher/Developer/CrackingCoding/src/dependency/DependencyManagement.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/LongestSubStringWithoutRepeatingCharacters.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/BstInsertionDeletion.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/sort/QuickSort.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/Graph.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arrays/ThreeSum.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/LongestCommonSubStringDP.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/graphs/GraphNode.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/linkedlist/ListUtil.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/arithmetic/ClosestPalindrome.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/trees/CheckBalancedTree.java</file>
-            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/LongestPalindromeSubString.java</file>
+            <file>file:/Users/vasher/Developer/CrackingCoding/src/string/MinSubString.java</file>
         </group>
     </open-files>
 </project-private>

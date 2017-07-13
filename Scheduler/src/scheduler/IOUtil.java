@@ -3,36 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package io;
+package scheduler;
 
 import java.util.Scanner;
-import java.util.Set;
 
 /**
  *
  * @author vasher
  */
 public class IOUtil {
-    
     public static int readInteger(String message){
         System.out.println(message);
         Scanner sc = new Scanner(System.in);
         return sc.nextInt();
     }
     
-    public static long readLong(String message){
+    public static String readString(String message){
         System.out.println(message);
         Scanner sc = new Scanner(System.in);
-        return sc.nextLong();
+        return sc.nextLine();
     }
-    
-    public static void displaySet(Set set){
-        System.out.println("Set contains:");
-        if(set != null){
-            for(Object o: set){
-                System.out.println(o);
-            }
-        }
-    }
-    
 }
