@@ -44,7 +44,7 @@ public class JumpGame {
         JumpGame jg = new JumpGame();
         int[] arr = ArrayUtil.sampleUnsortedArray();
         ArrayUtil.outputArray(arr);
-        if(jg.canJump(arr)){
+        if(jg.canJump(null)){
             System.out.println("Can Jump!");
         } else {
             System.out.println("Cannot Jump!!!");
