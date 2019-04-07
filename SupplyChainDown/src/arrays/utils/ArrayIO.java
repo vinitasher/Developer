@@ -1,6 +1,7 @@
 package arrays.utils;
 
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ArrayIO {
 
@@ -26,5 +27,18 @@ public class ArrayIO {
             }
         }
         System.out.print("]");
+    }
+
+    public static int[] generateInputArray(int length) {
+        int[] inputIntArr = new int[length];
+        for (int i = 0; i < length; i++) {
+            inputIntArr[i] = ThreadLocalRandom.current().nextInt(0, length);
+        }
+        return inputIntArr;
+    }
+
+    public static int generateInput(int range) {
+        int inputInt = ThreadLocalRandom.current().nextInt(0, range);
+        return inputInt;
     }
 }
