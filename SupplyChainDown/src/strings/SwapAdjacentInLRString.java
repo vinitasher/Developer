@@ -61,8 +61,8 @@ public class SwapAdjacentInLRString {
 
     public static void main(String[] args) {
         SwapAdjacentInLRString instance = new SwapAdjacentInLRString();
-        String start    = "XXXLXXXXXXX";
-        String end      = "XXXLXXXXXXX";
+        String start    = "XXXXXXXXXX";
+        String end      = "XXXXXXXXXX";
         System.out.println(instance.canTransform(start, end));
     }
 }

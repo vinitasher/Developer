@@ -29,7 +29,15 @@ public class ArrayIO {
         System.out.print("]");
     }
 
-    public static int[] generateInputArray(int length) {
+    public static int[] generateInputArray(int min, int max, int length) {
+        int[] inputIntArr = new int[length];
+        for (int i = 0; i < length; i++) {
+            inputIntArr[i] = ThreadLocalRandom.current().nextInt(min, max);
+        }
+        return inputIntArr;
+    }
+
+    public static int[] generatePositiveInputArray(int length) {
         int[] inputIntArr = new int[length];
         for (int i = 0; i < length; i++) {
             inputIntArr[i] = ThreadLocalRandom.current().nextInt(0, length);
