@@ -57,11 +57,13 @@ public class CourseSchedule {
     }
 
     public boolean canFinishRecursive(Map<Integer, Set<Integer>> courses, Set<Integer> prerequisite, int start, Set<Integer> visited){
+        //iterate for each prerequisite
         for(Integer p: prerequisite){
             if(visited.contains(p)){
                 continue;
             }
             visited.add(p);
+            //if you detect a circular dependency then return false since course can never be completed
             if(p.intValue() == start){
                 return false;
             }

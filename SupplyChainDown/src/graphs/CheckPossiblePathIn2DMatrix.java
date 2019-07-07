@@ -5,6 +5,7 @@ package graphs;
  * In the matrix, 1 is considered as road cell and 0 is considered as no road cell(can’t go through this cell).
  * Return true or false if there is path like the description above.
  * You can traverse up, down, right and left.
+ *
  * Input : arr[][] = {
  *                  {1, 1, 0, 1, 0},
  *                  {1, 0, 0, 1, 1},
@@ -12,6 +13,7 @@ package graphs;
  *                  {1, 1, 1, 0, 0},
  *                  {1, 0, 1, 1, 1}}
  * Output : Yes
+ *
  * Input : arr[][] = {{1, 0, 0, 1, 0},
  *                   {1, 0, 0, 1, 1},
  *                   {0, 0, 0, 1, 0},
