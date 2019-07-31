@@ -1,6 +1,7 @@
 package intervals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -104,6 +105,6 @@ public class IntervalListIntersections {
         int[][] B = {{1,5},{8,12},{15,24},{25,26}};
 
         IntervalListIntersections instance = new IntervalListIntersections();
-        int[][] result = instance.intervalIntersection(A, B);
+        System.out.println(Arrays.toString(instance.intervalIntersection(A, B)));
     }
 }

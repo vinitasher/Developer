@@ -26,7 +26,6 @@ public class kthLargestElementInArray {
         }
         if(k == 0) k = 1;
         int median = start + ArrayIO.generateInput(end - start);
-        System.out.println("nums " + Arrays.toString(nums) + " start " + start + " end " + end + " median " + median + " nums[m] " + nums[median] + " k " + k);
         swap(nums, start, median);
         for(int i = start, j = end; i < end && j >= i; i++) {
             while(nums[i] > nums[start] && i <= j) {

@@ -37,7 +37,7 @@ public class PalindromePairs2 {
             if(isPalindrome == null) continue;
             for(Integer pair: isPalindrome){
                 if(pair.intValue() != i){
-                    result.add(Arrays.asList(pair.intValue(), i));
+                    result.add(Arrays.asList(i, pair.intValue()));
                 }
             }
         }

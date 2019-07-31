@@ -20,7 +20,7 @@ public class ReverseLinkedList2 {
         head.next.next = new ListNode(3);
         head.next.next.next = new ListNode(4);
         head.next.next.next.next = new ListNode(5);
-        ListNode newHead = instance.reverseBetweenRecursive(head, 2, 3);
+        ListNode newHead = instance.reverseBetween(head, 2, 3);
         while (newHead != null) {
             System.out.println(newHead.val + "\t");
             newHead = newHead.next;

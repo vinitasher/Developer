@@ -50,7 +50,7 @@ public class WallsAndGates {
             return ;
         }
 
-        if(min<rooms[i][j]||min==0) {
+        if(min<rooms[i][j] || min==0) {
             rooms[i][j] = min;
             Set<MatrixNode> neighbors = findNeighbors(rooms, i, j);
             for (MatrixNode neighbor : neighbors) {
